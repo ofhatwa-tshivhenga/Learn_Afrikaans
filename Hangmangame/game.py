@@ -12,17 +12,21 @@ def display_word(word, guessed_letters):
 def play_hangman():
     afrikaans_word = random.choice(list(word_pairs.values()))
     guessed_letters = set()
-    attempts_left = 6
+    attempts_left = 12
     
     print("🎮 Welcome to Afrikaans Hangman!")
     print("Guess the Afrikaans word, one letter at a time.\n")
 
     while attempts_left > 0:
+        print(f"The afriaans word is {len(afrikaans_word)} letters")
         print(f"Word: {display_word(afrikaans_word, guessed_letters)}")
         print(f"Attempts left: {attempts_left}")
         print(f"Guessed letters: {', '.join(sorted(guessed_letters))}\n")
 
         guess = input("Enter a letter: ").lower().strip()
+
+        if guess == "quit":
+            break
 
         if len(guess) != 1 or not guess.isalpha():
             print("⚠️ Please enter a single letter.\n")
@@ -31,6 +35,7 @@ def play_hangman():
         if guess in guessed_letters:
             print("⚠️ You already guessed that letter!\n")
             continue
+        
 
         guessed_letters.add(guess)
 
