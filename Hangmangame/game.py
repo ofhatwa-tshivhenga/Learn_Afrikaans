@@ -1,22 +1,18 @@
-import sys
-import os
-import random
-
-# Add parent directory to Python path
+import sys, os, random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from word_pairs import word_pairs
+from utils import get_word_pairs
 
+CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5-wdZWc_8Jga7fJKJb2BV0ayl403qss3hsK8xbYXcHBy7U-prB5LLwM6UTfCWwI8TEAhnJDvQ6rRO/pub?output=csv"
+word_pairs = get_word_pairs(CSV_URL)
 
 def display_word(word, guessed_letters):
-    """Return the word with guessed letters shown, others as underscores."""
     return " ".join(letter if letter in guessed_letters else "_" for letter in word)
 
 def play_hangman():
-    # pick a random Afrikaans word
     afrikaans_word = random.choice(list(word_pairs.values()))
     guessed_letters = set()
-    attempts_left = 6  # standard hangman tries
+    attempts_left = 6
     
     print("🎮 Welcome to Afrikaans Hangman!")
     print("Guess the Afrikaans word, one letter at a time.\n")

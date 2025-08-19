@@ -1,12 +1,10 @@
-import time
-import sys
-import os
-import random
-
-# Add parent directory to Python path
+import sys, os, random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from word_pairs import word_pairs  # import dictionary from other file
+from utils import get_word_pairs
+
+CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5-wdZWc_8Jga7fJKJb2BV0ayl403qss3hsK8xbYXcHBy7U-prB5LLwM6UTfCWwI8TEAhnJDvQ6rRO/pub?output=csv"
+word_pairs = get_word_pairs(CSV_URL)
 
 def play_typing_challenge():
     score = 0
