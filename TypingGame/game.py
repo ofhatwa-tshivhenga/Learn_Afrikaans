@@ -1,4 +1,4 @@
-import sys, os, random
+import sys, os, random, time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils import get_word_pairs
@@ -27,7 +27,7 @@ def play_typing_challenge():
         
         if answer == afrikaans:
             time_taken = round(end_time - start_time, 2)
-            print(f"✅ Correct! (⏱️ {time_taken} seconds)\n")
+            print(f"✅ Correct! (⏱️    {time_taken} seconds)\n")
             score += 1
         else:
             print(f"❌ Wrong! The correct answer is '{afrikaans}'.\n")
